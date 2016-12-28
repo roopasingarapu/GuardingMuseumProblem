@@ -35,9 +35,6 @@ public class BFS {
 		try
 		{
 			System.out.println("Enter the path of the input file: ");
-			/*String fpath = new String();
-			Scanner filep = new Scanner(System.in);
-			fpath = filep.next();*/
 			File fname = new File(args[1]);
 			long startTime = System.currentTimeMillis();
 			FileReader fr = new FileReader(fname);
@@ -47,12 +44,7 @@ public class BFS {
             while (lnr.readLine() != null){	
         	linenumber++;
             }
-			//System.out.println("Enter the number of Vertices:"+linenumber);
-			//vertex=scan.nextInt();
-			//System.out.println("Enter the number of Edges:");
-			//edge=scan.nextInt();
 			adjList = new BFS(linenumber);
-			//System.out.println("Define the edges from vertex to vertex:");
 			while(count != linenumber)
 			{
 				String[] splited = scan.nextLine().split("\\s+");
@@ -77,19 +69,14 @@ public class BFS {
 				}
 				System.out.println();
 			}
-			//System.out.println("Enter the Source for the graph:");
 			source = args[2];
-			//System.out.println("Enter the Sink for the graph:");
 			sink = args[3];
-			
-			//int maxFlow = Fulkerson.fordFulkerson(source,sink,adjacencyList);
-			//System.out.println("MAX FLOW "+maxFlow);
+
 		boolean sinkReached = bfsTraversal(source,sink,adjacencyList);
 		long endTime = System.currentTimeMillis();
         System.out.println("The time of execution in MilliSeconds: "+(endTime-startTime));
 		
 		scan.close();
-		//filep.close();
 		}
 		catch(Exception e)
 		{
@@ -108,15 +95,10 @@ public static boolean bfsTraversal(String source,String sink,HashMap<String,Node
 	boolean sinkReached = false;
 	vertex=adjacencyList.size();
 	Hashtable<String,Boolean> flag=new Hashtable<String,Boolean>();
-	//boolean[] flag = new boolean[vertex+1];
-	//prev = new int[vertex+1];
-	//for(int i=0;i<vertex;i++)
 	for(String i:adjacencyList.keySet())
 	{
 		flag.put(""+i, false);
-		//flag[i] = false;
 		prev.put(""+i, "-1");
-		//prev[i] = -1;
 	}
 	flag.put("d0", false);
 	queue.clear();
@@ -132,9 +114,7 @@ while(!queue.isEmpty())
 		if(flag.get(k) == false && node.ll.get(k)!=0)
 		{
 			flag.put(k, true);
-			//flag[k] = true;
 			prev.put(k, checkNode);
-			//prev[k] = checkNode;
 			queue.add(k);
 		}
 	}	
